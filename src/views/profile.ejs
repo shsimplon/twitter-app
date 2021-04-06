@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/iconTwitter.png">
+</head>
+
+<body>
+    <section class="section-accueil">
+
+        <div class="tweet-navigation">
+            <img class="tweet-navigation-image" src="/images/logoTwitter.png" alt="">
+            <div class="tweet-navigation-link">
+                <a href="/">
+                    <img src="/images/home-run.png" alt="">
+                    <h2>Home</h2>
+                </a>
+                <a href="">
+                    <img src="/images/hastag.png" alt="">
+                    <h2>Explore</h2>
+                </a>
+                <a href="">
+                    <img src="/images/bookmark.png" alt="">
+                    <h2>Bookmarks</h2>
+                </a>
+                <a href="/username">
+                    <img src="/images/user.png" alt="">
+                    <h2>My Tweets</h2>
+                </a>
+                <a href="/logout">
+                    <img src="/images/logout.png" alt="">
+                    <h2>Logout</h2>
+                </a>
+            </div>
+        </div>
+
+        <div class="tweet-container">
+            <div class="tweet-container-title">
+                <h3>
+                    <%=infoUser.last_name%>
+                </h3>
+            </div>
+            <div class="tweet-container-profile">
+                <div class="tweet-container-profile-background">
+                    <img src="" alt="">
+                </div>
+                <div class="tweet-container-profile-picture">
+                    <img src="" alt="">
+                </div>
+                <div class="tweet-container-profile-infos">
+                    <h3>
+                        <%=infoUser.first_name%>
+                            <h3>
+                                <h4> @
+                                    <%=infoUser.username%>
+                                </h4>
+
+                </div>
+            </div>
+
+            <%tweets.forEach((tweet) => {%>
+
+
+                <div class="comments-comment">
+                    <a href="/updatetweet/<%=tweet.id %>"><img src="" alt=""></a>
+                    <div class="comments-comment-content">
+                        <div class="comments-comment-content-nameDate">
+                            <a href="/updatetweet/<%=tweet.id %>">
+                                <h3 class="comments-comment-content-username">
+                                    <%= tweet.username %>
+                                </h3>
+                            </a>
+                            <span class="comments-comment-content-date"></span>
+                        </div>
+                        <p class="comments-comment-content-text">
+                            <%= tweet.text %>
+                        </p>
+                    </div>
+                </div>
+
+
+
+                <%})%>
+
+        </div>
+
+
+        </div>
+
+        <div class="tweet-search"></div>
+
+    </section>
+</body>
+
+</html>

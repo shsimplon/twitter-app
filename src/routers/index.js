@@ -7,6 +7,7 @@ const router = express.Router();
 
 // consulter les 20 derniers tweets tous utilisateurs confondus
 router.get("/", tweetController.findAll);
+router.get("/username", isAuth, tweetController.profileUser);
 
 
 //  consulter la liste des tweets d'un utilisateur précis
@@ -22,7 +23,7 @@ router.get('/users/:id/tweets/:tweetId', isAuth, tweetController.findtweetDetail
 
 
 router.post('/updatetweet/:tweetId', isAuth, tweetController.updateTweet);
-router.get('/username', isAuth, tweetController.myTweet);
+
 
 router.get('/signup', userController.signup);
 router.post('/signup', userController.newAccount);

@@ -27,7 +27,10 @@ const router = require("./routers");
 server.engine("ejs", ejs.renderFile);
 
 server.set("views", "./src/views");
+
 server.use(express.static("./src/assets"));
+
+
 
 
 server.use(express.urlencoded({ extended: true }));
@@ -35,7 +38,7 @@ server.use(cookieParser());
 
 server.use(router);
 
-server.listen(8081, () => {
-    console.log("Server running at port 8081");
+server.listen(8085, () => {
+    console.log("Server running at port 8085");
 
 });

@@ -76,3 +76,18 @@ exports.updateTweet = (requestBody, tweetId, callback) => {
         callback(null, result);
     });
 }
+exports.getUser = (user, callback) => {
+
+
+    db.query(`SELECT * FROM users LEFT JOIN tweets ON users.id = tweets.id_user WHERE username = "${user.username}";`, (error, result) => {
+        if (error) {
+            console.log("error: ", error);
+            callback(error, null);
+            return;
+        }
+        console.log("bonjour", result)
+
+        callback(null, result);
+
+    })
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="/updatetweet/<%=tweetId%>" method="post" class="tweet-container-form">
+        <div class="tweet-container-message">
+            <label for="message"></label>
+            <div class="tweet-container-text">
+                <textarea name="message" id="message" placeholder=""></textarea>
+            </div>
+
+        </div>
+        <div class="tweet-container-button">
+            <button type="submit" class="tweet-button">Modify your tweet</button>
+        </div>
+
+    </form>
+
+
+    <% connectedUserTweetDet.forEach((element, index)=> { %>
+        <p>Created the:
+            <%= element.creation_date %>
+        </p>
+        <p> by:
+            <%= element.username %>
+        </p>
+        <% }) %>
+
+
+
+
+
+            <forEach((element, index)=> { %>
+                <p>Created the:
+                    <%= element.creation_date %>
+                </p>
+                <p> by:
+                    <%= element.username %>
+                </p>
+                <% }) %>
+
+
+
+
+
+</body>
+
+</html>

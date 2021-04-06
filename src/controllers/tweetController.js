@@ -45,34 +45,33 @@ exports.findUserTweets = (request, response) => {
 }
 
 // acceder à mes tweets quqnd je suis connecte
-exports.myTweet = (request, response) => {
+// exports.myTweet = (request, response) => {
 
 
-        const { user } = request;
-        // l'envoi de id permet de référencier les users
-        console.log('users')
+//         const { user } = request;
+//         // l'envoi de id permet de référencier les users
+//         console.log('users')
 
-        twitter.getTweets(user, (error, userTweet) => {
-            if (error) {
-                response.send(error.message);
-            }
+//         twitter.getTweets(user, (error, userTweet) => {
+//             if (error) {
+//                 response.send(error.message);
+//             }
 
-            // console.log(userTweet[0].last_name)
-            response.render('userTweets.ejs', { userTweet, user });
+//             // console.log(userTweet[0].last_name)
+//             response.render('userTweets.ejs', { userTweet, user });
 
-        });
+//         });
 
 
-    }
-    // créer un tweet
+//     }
+// créer un tweet
 
 exports.addTweet = (request, response) => {
     // response.send('bien')=== faire en premier pour verifier la route d'envoi
     const { text } = request.body // const text = request.body.text;
-
     const id = request.user.id
-    console.log(id)
-    console.log(text)
+    console.log('ccc', id)
+    console.log('bbbb', text)
 
     twitter.insertTweet(id, text, (error, result) => {
 
@@ -123,8 +122,27 @@ exports.updateTweet = (request, response) => {
         }
 
 
-        response.redirect("/");
+        response.redirect("/username");
 
     });
 
+}
+
+
+// 2.ETQ visiteur je veux consulter la liste des tweets d'un utilisateur précis
+exports.profileUser = (request, response) => {
+
+    const { user } = request;
+
+    twitter.getUser(user, (error, result) => {
+        if (error) {
+            response.send(error.message);
+        }
+
+        const infoUser = result[0]; //recuperer luser connecté
+        const tweets = result; //recuperer tous le tweet de l'utilisateur
+        response.render("profile.ejs", { infoUser, tweets });
+
+
+    });
 }
